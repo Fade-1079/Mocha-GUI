@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <ProjectGuid>{D7E52D8D-5B4B-4C17-A6D4-0F2A7D2F6E91}</ProjectGuid>
+    <RootNamespace>MochaUI</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;WIN32_LEAN_AND_MEAN;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\ImGui;$(ProjectDir)Dependencies\ImGui\freetype;$(ProjectDir)Dependencies\ImGui\addons;$(ProjectDir)Dependencies\Kiero;$(ProjectDir)Dependencies\FreeType\include;$(ProjectDir)Dependencies\Microsoft DirectX SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)Dependencies\FreeType\lib\x64;$(ProjectDir)Dependencies\Microsoft DirectX SDK\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;dxguid.lib;d3dcompiler.lib;d3dx11.lib;freetype.lib;user32.lib;gdi32.lib;ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;WIN32_LEAN_AND_MEAN;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\ImGui;$(ProjectDir)Dependencies\ImGui\freetype;$(ProjectDir)Dependencies\ImGui\addons;$(ProjectDir)Dependencies\Kiero;$(ProjectDir)Dependencies\FreeType\include;$(ProjectDir)Dependencies\Microsoft DirectX SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)Dependencies\FreeType\lib\x64;$(ProjectDir)Dependencies\Microsoft DirectX SDK\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;dxguid.lib;d3dcompiler.lib;d3dx11.lib;freetype.lib;user32.lib;gdi32.lib;ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="src\Hook.cpp" />
+    <ClCompile Include="src\Gui.cpp" />
+    <ClCompile Include="src\Textures.cpp" />
+    <ClCompile Include="Dependencies\Kiero\kiero.cpp" />
+    <ClCompile Include="Dependencies\ImGui\imgui.cpp" />
+    <ClCompile Include="Dependencies\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="Dependencies\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="Dependencies\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="Dependencies\ImGui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="Dependencies\ImGui\imgui_impl_win32.cpp" />
+    <ClCompile Include="Dependencies\ImGui\addons\imgui_addons.cpp" />
+    <ClCompile Include="Dependencies\ImGui\addons\imgui_stdlib.cpp" />
+    <ClCompile Include="Dependencies\ImGui\freetype\imgui_freetype.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Hook.h" />
+    <ClInclude Include="src\Gui.h" />
+    <ClInclude Include="src\Textures.h" />
+    <ClInclude Include="src\Tabs\Combat.h" />
+    <ClInclude Include="src\Tabs\Movement.h" />
+    <ClInclude Include="src\Tabs\Misc.h" />
+    <ClInclude Include="src\Tabs\Visuals.h" />
+    <ClInclude Include="src\Tabs\Exploits.h" />
+    <ClInclude Include="src\Tabs\PlayerList.h" />
+    <ClInclude Include="src\Tabs\Assets.h" />
+    <ClInclude Include="src\Tabs\Items.h" />
+    <ClInclude Include="src\Tabs\Configs.h" />
+    <ClInclude Include="src\Tabs\Themes.h" />
+    <ClInclude Include="src\Tabs\TestMenu.h" />
+    <ClInclude Include="src\Tabs\AntiExploits.h" />
+    <ClInclude Include="src\Tabs\Api.h" />
+    <ClInclude Include="src\Tabs\TabControls.h" />
+    <ClInclude Include="Dependencies\Kiero\kiero.h" />
+    <ClInclude Include="Dependencies\ImGui\imgui.h" />
+    <ClInclude Include="Dependencies\ImGui\imgui_internal.h" />
+    <ClInclude Include="Dependencies\ImGui\imconfig.h" />
+    <ClInclude Include="Dependencies\ImGui\imgui_impl_dx11.h" />
+    <ClInclude Include="Dependencies\ImGui\imgui_impl_win32.h" />
+    <ClInclude Include="Dependencies\ImGui\addons\imgui_addons.h" />
+    <ClInclude Include="Dependencies\ImGui\addons\imgui_stdlib.h" />
+    <ClInclude Include="Dependencies\ImGui\freetype\imgui_freetype.h" />
+    <ClInclude Include="Resources\Fonts\Poppins_Medium.h" />
+    <ClInclude Include="Resources\Fonts\MuseoSans.h" />
+    <ClInclude Include="Resources\Fonts\Roboto_Regular.h" />
+    <ClInclude Include="Resources\Fonts\IconsFontAwesome6.h" />
+    <ClInclude Include="Resources\Fonts\IconsFontAwesome6Brands.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
